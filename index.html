@@ -498,16 +498,39 @@
 </footer>
 
 <script>
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const nombre = document.getElementById('nombre').value;
-    const contacto = document.getElementById('email').value;
-    const libro = document.getElementById('libro-select').value || 'no especificado';
-    const mensaje = document.getElementById('mensaje').value;
-    const texto = encodeURIComponent(`Hola! Me contacto desde tu web.\nNombre: ${nombre}\nContacto: ${contacto}\nLibro: ${libro}${mensaje ? '\nMensaje: ' + mensaje : ''}`);
-    window.open(`https://www.instagram.com/flasheadinho`, '_blank');
-    document.getElementById('contact-form').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+
+    const data = {
+      nombre: document.getElementById('nombre').value,
+      contacto: document.getElementById('email').value,
+      libro: document.getElementById('libro-select').value || 'no especificado',
+      mensaje: document.getElementById('mensaje').value
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/maqrvzpk', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        document.getElementById('contact-form').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Enviar consulta';
+        btn.disabled = false;
+        alert('Hubo un error. Por favor escribí directamente a @flasheadinho en Instagram.');
+      }
+    } catch(err) {
+      btn.textContent = 'Enviar consulta';
+      btn.disabled = false;
+      alert('Hubo un error de conexión. Por favor escribí directamente a @flasheadinho en Instagram.');
+    }
   });
 </script>
 
