@@ -288,6 +288,59 @@
   }
   .book-cta:hover { background: var(--red); color: var(--white); }
 
+  .book-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  .book-price span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 300;
+    color: var(--cream-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  .combo-box {
+    max-width: 1000px;
+    margin: 0 auto 1rem;
+    padding: 2rem;
+    text-align: center;
+    background: rgba(192, 40, 42, 0.08);
+    border: 1px solid rgba(192, 40, 42, 0.4);
+    border-radius: 6px;
+  }
+  .combo-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+  .combo-box .combo-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--red-light);
+    font-weight: 700;
+    margin: 0.5rem 0;
+  }
+  .combo-box .combo-old {
+    font-size: 0.85rem;
+    color: var(--cream-muted);
+    text-decoration: line-through;
+    margin-bottom: 0.3rem;
+  }
+  .combo-box p {
+    font-size: 0.85rem;
+    color: var(--cream-muted);
+    margin-top: 0.3rem;
+  }
+
   .book-badge {
     display: inline-flex;
     align-items: center;
@@ -442,6 +495,45 @@
   }
   .form-note a { color: var(--cream); text-decoration: none; border-bottom: 1px solid var(--border); }
   .form-note a:hover { border-color: var(--red); color: var(--red-light); }
+
+  .shipping-box {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 0.5px solid var(--border);
+    text-align: center;
+  }
+  .shipping-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+  .shipping-box p {
+    font-size: 0.82rem;
+    color: var(--cream-muted);
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+  }
+  .shipping-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.6rem;
+    border: 1px solid var(--cream-muted);
+    border-radius: 2px;
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .shipping-btn:hover {
+    border-color: var(--cream);
+    background: rgba(240,232,216,0.06);
+  }
+  .shipping-btn svg { opacity: 0.85; }
   .form-success {
     display: none;
     text-align: center;
@@ -525,6 +617,7 @@
       <div class="book-available">
         <span class="dot"></span>Ya disponible
       </div>
+      <div class="book-price">$20.000<span>Envío a todo el país</span></div>
       <div class="book-quote">"Porque desorientarse — literal y figuradamente — suele ser el primer paso para descubrir algo verdadero."</div>
       <p class="book-desc">26 días por China, Corea del Sur y Japón junto a Celeste. Un viaje que arrancó en medio de tensiones geopolíticas y paros aeroportuarios, y terminó sacudiendo las creencias más arraigadas. Con humor, honestidad y reflexión, un diario íntimo que propone que perderse no es un error: es el método.</p>
       <a href="#contacto" class="book-cta" onclick="document.getElementById('libro-select').value='Desorientados'">Conseguir el libro</a>
@@ -545,10 +638,19 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
         <span><strong>Segunda edición · Octubre 2026</strong><br>con nuevas fotos e ilustraciones</span>
       </div>
+      <div class="book-price">$20.000<span>Envío a todo el país</span></div>
       <div class="book-quote">"Un viaje que arrancó con cinco personas sin certificado de vacuna y terminó siendo el viaje de nuestras vidas."</div>
       <p class="book-desc">22 días por India y Nepal con un grupo de 16 viajeros argentinos. Desde los obstáculos para ingresar al país hasta el Taj Mahal, el Ganges en Varanasi, los ashrams de Rishikesh, los backwaters de Kerala y los templos de Katmandú. Un relato íntimo, divertido y honesto de lo que es viajar en grupo por Asia del Sur.</p>
       <a href="#contacto" class="book-cta" onclick="document.getElementById('libro-select').value='Diario de un obsesivo compulsivo por la India y Nepal'">Conseguir el libro</a>
     </div>
+  </div>
+
+  <div class="combo-box">
+    <h3>¿Te llevás los dos?</h3>
+    <div class="combo-old">$40.000</div>
+    <div class="combo-price">$35.000</div>
+    <p>Llevando ambos libros. Envío a todo el país.</p>
+    <a href="#contacto" class="book-cta" style="margin-top:0.8rem" onclick="document.getElementById('libro-select').value='Ambos'">Quiero los dos</a>
   </div>
 </section>
 
@@ -604,9 +706,18 @@
     </div>
 
     <p class="form-note">
-      También podés escribir directo por Instagram:<br>
-      <a href="https://www.instagram.com/flasheadinho" target="_blank" rel="noopener">@flasheadinho</a>
+      También podés escribir directo por redes:<br>
+      <a href="https://www.instagram.com/flasheadinho" target="_blank" rel="noopener">Instagram @flasheadinho</a> · <a href="https://x.com/Flasheadinho" target="_blank" rel="noopener">X @Flasheadinho</a>
     </p>
+
+    <div class="shipping-box">
+      <h3>Envíos a todo el país</h3>
+      <p>Hacemos envíos por Correo Argentino a cualquier punto del país.<br>Calculá cuánto sale el envío a tu domicilio:</p>
+      <a href="https://www.correoargentino.com.ar/formularios/ecommerce" target="_blank" rel="noopener" class="shipping-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Calculá tu envío
+      </a>
+    </div>
   </div>
 </section>
 
